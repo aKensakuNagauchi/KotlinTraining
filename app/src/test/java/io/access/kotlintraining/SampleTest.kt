@@ -112,6 +112,15 @@ class SampleTest {
         }
         println(d.roll())
     }
+
+    @Test
+    fun testMyCustomClass() {
+        val p = MyCustomClass()
+        p.propertyWithCounter = 123
+        p.propertyWithCounter = 456
+        p.propertyWithCounter = 789
+        assertEquals(expected = 3, actual = p.counter)
+    }
 }
 
 private fun Int.isOdd() = this % 2 != 0
