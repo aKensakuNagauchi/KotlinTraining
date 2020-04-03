@@ -88,4 +88,22 @@ class SampleTest {
         assertEquals(expected = 23797, actual = power(4.5, 6.7).toInt())
         assertEquals(expected = 0.0, actual = power(-1.0, 2.0))
     }
+
+    @Test
+    fun testisOdd() {
+        for (i in 1..10) {
+            assertEquals(expected = true, actual = (i * 2 + 1).isOdd())
+        }
+    }
+
+    @Test
+    fun testisEven() {
+        for (i in 1..10) {
+            assertEquals(expected = true, actual = (i * 2).isEven())
+        }
+    }
 }
+
+private fun Int.isOdd() = this % 2 != 0
+
+private fun Int.isEven() = this % 2 == 0
