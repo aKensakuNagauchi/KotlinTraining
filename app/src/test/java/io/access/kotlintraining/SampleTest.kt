@@ -121,6 +121,14 @@ class SampleTest {
         p.propertyWithCounter = 789
         assertEquals(expected = 3, actual = p.counter)
     }
+
+    @Test
+    fun testNabeAtsu() {
+        val n = NabeAtsu()
+        for (i in 1..100) {
+            println(n.next())
+        }
+    }
 }
 
 private fun Int.isOdd() = this % 2 != 0
