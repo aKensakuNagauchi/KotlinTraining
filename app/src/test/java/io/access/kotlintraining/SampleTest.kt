@@ -1,6 +1,7 @@
 package io.access.kotlintraining
 
 import org.junit.Test
+import java.security.InvalidParameterException
 import kotlin.test.assertEquals
 
 class SampleTest {
@@ -37,6 +38,38 @@ class SampleTest {
     fun testFizzBuzz() {
         for (i in 1..100) {
             assertEquals(expected = fizzBuzz(i), actual = fizzBuzz2(i))
+        }
+    }
+
+    private fun isLeapYear(year: Int): Boolean {
+        // 0未満はエラー
+        if (year < 0) {
+            throw InvalidParameterException("The parameter \"year\" should not minus.")
+        }
+
+        // うるう年は4で割り切れることが前提
+        if (year % 4 != 0) {
+            return false
+        }
+
+        // 100で割り切れて、400で割り切れないとうるう年ではない
+        if (year % 100 == 0 && year % 400 != 0) {
+            return false
+        }
+
+        return true
+    }
+
+    private fun isLeapYear2(year: Int) = if (year < 0) {
+        throw InvalidParameterException("The parameter \"year\" should not minus.")
+    } else {
+        year % 400 == 0 || (year % 100 != 0 && year % 4 == 0)
+    }
+
+    @Test
+    fun testIsLeapYear() {
+        for (i in 1800..2200) {
+            assertEquals(expected = isLeapYear(i), actual = isLeapYear2(i))
         }
     }
 }
