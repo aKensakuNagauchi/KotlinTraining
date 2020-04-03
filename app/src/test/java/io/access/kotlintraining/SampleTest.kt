@@ -2,6 +2,7 @@ package io.access.kotlintraining
 
 import org.junit.Test
 import java.security.InvalidParameterException
+import java.util.*
 import kotlin.math.pow
 import kotlin.test.assertEquals
 
@@ -101,6 +102,15 @@ class SampleTest {
         for (i in 1..10) {
             assertEquals(expected = true, actual = (i * 2).isEven())
         }
+    }
+
+    @Test
+    fun testDice() {
+        val d = Dice(16)
+        for (i in 1..100) {
+            println(d.roll())
+        }
+        println(d.roll())
     }
 }
 
