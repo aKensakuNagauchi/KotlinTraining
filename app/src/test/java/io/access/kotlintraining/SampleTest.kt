@@ -2,6 +2,7 @@ package io.access.kotlintraining
 
 import org.junit.Test
 import java.security.InvalidParameterException
+import kotlin.math.pow
 import kotlin.test.assertEquals
 
 class SampleTest {
@@ -71,5 +72,20 @@ class SampleTest {
         for (i in 1800..2200) {
             assertEquals(expected = isLeapYear(i), actual = isLeapYear2(i))
         }
+    }
+
+    private fun power(a: Double, n: Double): Double {
+        if (a < 0 || n < 0) {
+            println("inputs must be positive. return 0")
+            return 0.0
+        }
+        return a.pow(n)
+    }
+
+    @Test
+    fun testPower() {
+        assertEquals(expected = 8.0, actual = power(2.0, 3.0))
+        assertEquals(expected = 23797, actual = power(4.5, 6.7).toInt())
+        assertEquals(expected = 0.0, actual = power(-1.0, 2.0))
     }
 }
