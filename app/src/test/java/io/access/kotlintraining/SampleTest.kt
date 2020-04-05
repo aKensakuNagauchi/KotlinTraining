@@ -129,8 +129,22 @@ class SampleTest {
             println(n.next())
         }
     }
+
+    @Test
+    fun testSendMessageToClient() {
+        val personalInfo = PersonalInfo(email = "antonio@abc-company.com")
+        val client = Client(personalInfo = personalInfo)
+        val mailer = CosmosMailer()
+        sendMessageToClient(client = client, message = "Hello, Antonio!", mailer = mailer)
+    }
 }
 
 private fun Int.isOdd() = this % 2 != 0
 
 private fun Int.isEven() = this % 2 == 0
+
+private fun sendMessageToClient(client: Client?, message: String?, mailer: Mailer) {
+    val personalInfo: PersonalInfo? = client?.personalInfo ?: return
+    val email: String = personalInfo?.email ?: return
+    message?.let { mailer.sendMessage(email, it) }
+}
